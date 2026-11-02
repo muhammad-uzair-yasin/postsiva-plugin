@@ -21,9 +21,10 @@ use the Postsiva connector's tools well.
 2. **Match the brand.** Before writing ANY content, call `get_brand_persona` and `get_memories`, and
    read the matching writing skill with `read_skill` (names from `list_skills`, e.g. `linkedin-post`,
    `instagram-post`, `blog-article`). Write in that voice — never generic AI copy.
-3. **Upload media first.** A post's image/video must be a Postsiva URL from `upload_media`. Raw local
-   paths and arbitrary external URLs are rejected by the platforms. Upload, get the `public_url`, then
-   pass it in `media_urls`.
+3. **Upload media first.** A post's image/video must be a Postsiva URL from `upload_media` — raw local
+   paths and arbitrary external URLs are rejected by the platforms. `upload_media` gives you **two ways**
+   to upload (a browser page for the user, or a curl command for a terminal agent that has the file
+   locally); use whichever fits, then pass the resulting `public_url` in `media_urls`. See Media below.
 4. **Confirm write actions.** `publish_post`, `publish_article`, `reply_to_comment` and
    `manage_scheduled` change things (publish, reply, reschedule, delete). Show the user what you're
    about to do and get a yes before running them.
@@ -66,7 +67,17 @@ an Instagram story `media_kind`, …). Never guess field names:
 - `list_articles(platform)`, `get_article(platform, post_id)` *(read)*
 
 **Media**
-- `upload_media(media_type?, platform?, file_path?)` — returns a public URL to use in a post *(read)*
+- `upload_media(media_type?, platform?, file_path?)` — get a file into Postsiva and receive a public URL
+  for `media_urls`. *(read — it only mints a short-lived upload link; the workspace's credentials are
+  never exposed.)* It returns **two ways** to upload — use whichever fits the surface:
+  1. **`upload_url`** — a browser upload page. On Claude web / mobile / Desktop (no local file access),
+     give this link to the user; they upload the file and send back the `public_url` / `media_id`.
+  2. **`curl_command`** — when you are a terminal / CLI agent (e.g. Claude Code) with the file on disk,
+     pass `file_path` and run the returned curl to upload it directly, then read `public_url` /
+     `media_id` from its JSON. (Covers image / video / document; audio is browser-only.)
+
+  Either way, pass the resulting public URL into `publish_post` / `publish_article`. `media_type`:
+  image | video | document | audio.
 
 **Brand context** (read these before writing)
 - `get_brand_persona`, `get_memories(scope?)`, `list_skills`, `read_skill(name)` *(read)*
