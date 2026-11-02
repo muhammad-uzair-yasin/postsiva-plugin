@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "postsiva": {
+      "type": "http",
+      "url": "https://mcp.postsiva.com/apps/mcp"
+    }
+  }
+}

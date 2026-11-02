@@ -1,0 +1,26 @@
+{
+  "name": "postsiva",
+  "version": "0.1.0",
+  "description": "Create, schedule, draft and publish social posts and blog articles across LinkedIn, Instagram, Facebook, TikTok, YouTube, Threads, Bluesky, Pinterest, Mastodon, WordPress, Blogger, Dev.to and Tumblr — written in your brand's own voice.",
+  "author": {
+    "name": "Postsiva LLC",
+    "email": "admin@postsiva.com",
+    "url": "https://www.postsiva.com"
+  },
+  "homepage": "https://docs.postsiva.com/integrations/claude",
+  "repository": "https://github.com/muhammad-uzair-yasin/postsiva-plugin",
+  "license": "MIT",
+  "keywords": [
+    "social media",
+    "scheduling",
+    "marketing",
+    "content",
+    "linkedin",
+    "instagram",
+    "facebook",
+    "tiktok",
+    "youtube",
+    "blog",
+    "wordpress"
+  ]
+}
