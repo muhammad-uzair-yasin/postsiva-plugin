@@ -9,6 +9,7 @@
   },
   "homepage": "https://docs.postsiva.com/integrations/claude",
   "repository": "https://github.com/muhammad-uzair-yasin/postsiva-plugin",
+  "privacyPolicyUrl": "https://www.postsiva.com/privacy",
   "license": "MIT",
   "keywords": [
     "social media",
